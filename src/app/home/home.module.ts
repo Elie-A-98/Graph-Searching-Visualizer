@@ -5,6 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
+import { GraphComponent } from '../components/graph/graph.component';
+import { NodeComponent } from '../components/node/node.component';
+import { EdgeComponent } from '../components/edge/edge.component';
+
+
+
 
 
 @NgModule({
@@ -12,8 +18,12 @@ import { HomePageRoutingModule } from './home-routing.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+	HomePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage,
+	GraphComponent,
+	NodeComponent,
+	EdgeComponent
+	]
 })
 export class HomePageModule {}
