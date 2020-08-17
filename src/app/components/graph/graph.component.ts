@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 //Components
 import {NodeComponent} from '../node/node.component'
@@ -11,26 +11,21 @@ import { NodesManagerService } from 'src/app/Services/nodes-manager.service';
   templateUrl: './graph.component.html',
   styleUrls: ['./graph.component.scss'],
 })
-export class GraphComponent implements OnInit, AfterViewInit {
+export class GraphComponent implements OnInit {
 
-	@ViewChild('no', { static: true }) n: ElementRef;
-
+	nodes: NodeComponent [] = [];
 
 	constructor(public nodesManager: NodesManagerService) { }
 
 	ngOnInit() {}
 
-	ngAfterViewInit() {
-		// this.input is NOW valid !!
-	}
 	  
 	MouseClicked (event: MouseEvent) : void {
 		this.nodesManager.AddNode(event.clientX, event.clientY);
 	}
 
-	ButtonClicked(): void {
-		this.n.nativeElement.innerHTML = "QWE";
-		console.log("CLICKED");
+	SwitchClicked(): void {
+		this.nodesManager.Switch();
 	}
 
 }

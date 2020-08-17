@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NodesManagerService } from 'src/app/Services/nodes-manager.service';
 
 @Component({
   selector: 'app-node',
@@ -7,11 +8,19 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class NodeComponent implements OnInit {
 
+	@Input() index: number;
+
 	@Input()  posX: number;
 	@Input()  posY: number;
-	
-	constructor(){}
 
-  	ngOnInit() {}
+	@Input() isClicked: boolean = false;
+
+	constructor(public nodeManager: NodesManagerService){}
+
+	ngOnInit() {}
+	  
+	NodeClicked(): void {
+		this.nodeManager.AddEdge (this.index);
+	}
 
 }

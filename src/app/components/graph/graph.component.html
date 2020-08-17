@@ -1,18 +1,28 @@
-<button (click) = "ButtonClicked()">XXX</button>
+<button (click) = "SwitchClicked()">Switch</button>
 
-<!-- <div class="graph" (click) = "MouseClicked($event)">
+<div class="graph" (click) = "MouseClicked($event)">
 
 	<div *ngIf="nodesManager.nodes">
 	
 		<div *ngFor = "let node of nodesManager.nodes">
-			<app-node [posX] = "node.posX" [posY] = "node.posY"></app-node>
+
+			<app-node [index] = "node.index" [posX] = "node.posX" [posY] = "node.posY" [isClicked]="node.isClicked"></app-node>
+
 		</div>
 
 	</div>
 
-</div> -->
+	<div *ngIf="nodesManager.edges">
+	
+		<div *ngFor = "let edge of nodesManager.edges">
 
-<app-edge></app-edge>
+			<app-edge [edgeProp] = "edge"></app-edge>
+
+		</div>
+
+	</div>
+
+</div>
 
 
 
