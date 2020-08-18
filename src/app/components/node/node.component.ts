@@ -15,7 +15,10 @@ export class NodeComponent implements OnInit {
 
 	@Input() isClicked: boolean = false;
 
-	constructor(public nodeManager: NodesManagerService){}
+	@Input() color: string;
+	@Input() infos: string [];
+
+	constructor(public nodeManager: NodesManagerService){	}
 
 	ngOnInit() {}
 	  

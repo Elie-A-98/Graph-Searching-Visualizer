@@ -46,7 +46,7 @@ export class NodesManagerService {
 	MakeEdge ():void {
 		this.edges.push (new Edge(this.edges.length, this.edgeStart, this.edgeEnd));
 		
-		this.edgeStart.isClicked = false ;
+		this.edgeStart.isClicked = false;
 		this.edgeEnd.isClicked = false;
 	}
 

@@ -1,27 +1,73 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+.row{
+	display: block;
+	width: 100%;
+	height: 100%;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.row__col{
+	position: relative;
+	float: left;
+	height: 100%;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.row__col--25{
+	width: 25%;
+}
+.row__col--33{
+	width: 33.33%;
+}
+.row__col--50{
+	width: 50%;
+}
+.row__col--75{
+	width: 75%;
 }
 
-#container a {
-  text-decoration: none;
+.center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.center--right{
+	position: absolute;
+	top: 50%;
+	right: 0%;
+	transform: translate(-14px, -50%);
+}
+.center_v{
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+}
+
+button {
+	margin: 0;
+	padding: 12px;
+	border-radius: 10%;
+	font: inherit;
+	color: inherit;
+	outline: none;
+	background-color: #29dfba;
+	transition: 0.2s;
+}
+button:hover{
+	background-color: #2ef7cf;
+}
+button:active{
+	background-color: #25c9a8;
+}
+
+
+select {
+	padding: 8px;
+	outline: none;
+	border: none;
+	background-color: #567fa9;
+}
+
+select option{
+	outline: none;
+	border: none;
+	background-color: #567fa9;
 }

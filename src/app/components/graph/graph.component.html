@@ -1,12 +1,12 @@
-<button (click) = "SwitchClicked()">Switch</button>
-
 <div class="graph" (click) = "MouseClicked($event)">
 
 	<div *ngIf="nodesManager.nodes">
 	
 		<div *ngFor = "let node of nodesManager.nodes">
 
-			<app-node [index] = "node.index" [posX] = "node.posX" [posY] = "node.posY" [isClicked]="node.isClicked"></app-node>
+			<app-node [index] = "node.index" [posX] = "node.posX" [posY] = "node.posY" [isClicked]="node.isClicked"
+						[color] = "node.color" [infos] = "node.infos"
+			></app-node>
 
 		</div>
 

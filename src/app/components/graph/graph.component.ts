@@ -13,19 +13,12 @@ import { NodesManagerService } from 'src/app/Services/nodes-manager.service';
 })
 export class GraphComponent implements OnInit {
 
-	nodes: NodeComponent [] = [];
-
 	constructor(public nodesManager: NodesManagerService) { }
 
 	ngOnInit() {}
-
 	  
 	MouseClicked (event: MouseEvent) : void {
 		this.nodesManager.AddNode(event.clientX, event.clientY);
-	}
-
-	SwitchClicked(): void {
-		this.nodesManager.Switch();
 	}
 
 }
