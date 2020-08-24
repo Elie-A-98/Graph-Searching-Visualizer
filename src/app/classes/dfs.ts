@@ -11,6 +11,8 @@ export class DFS {
 
 	steps: Step [] = [];
 
+	public infos: any [] ;
+
 	pathColor: string = 'green';
 	activeColor: string = 'red';
 	visitedColor: string = 'maroon';
@@ -19,6 +21,9 @@ export class DFS {
 	constructor (nodes: Nodee [], edges: Edge[]) {
 		this.nodes = nodes;
 		this.edges = edges;
+		this.infos = [] ;
+
+		this.infos = [] ;
 
 		this.adj = [];
 		let l = this.nodes.length;
@@ -28,6 +33,27 @@ export class DFS {
 				this.adj[i][j] = this.isAdjacent(i,j);
 			}
 		}
+
+		this.infos.push ({
+			info: 'Path',
+			value: this.pathColor
+		}
+		);
+		this.infos.push ({
+			info: 'Active',
+			value: this.activeColor
+		}
+		);
+		this.infos.push ({
+			info: 'Visited',
+			value: this.visitedColor
+		}
+		);
+		this.infos.push ({
+			info: 'Adjacent',
+			value: this.adjColor
+		}
+		);
 	}
 
 	private isAdjacent  (i: number, j: number): boolean{
@@ -68,7 +94,7 @@ export class DFS {
 			c_nodes[v].ReplaceInfos('Active');
 			this.steps.push (new Step (this.steps.length, c_nodes, this.edges));
 
-			for ( let j = 0 ; j < this.nodes.length; j ++){
+			for ( let j = this.nodes.length-1 ; j >= 0 ; j --){
 				if ( this.adj [v][j] == true && visited[j] == false){
 					visited[j] = true ;
 					st.push(j);

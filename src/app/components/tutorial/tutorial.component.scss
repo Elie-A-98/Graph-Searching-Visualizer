@@ -1,0 +1,70 @@
+.main{
+	display:flex; 
+	flex-direction: column; 
+	justify-content: space-between;
+
+	width: 55%; 
+	height: 75%; 
+	background-color: white; 
+	border: 2px solid black;
+	border-radius: 0.5%;
+	z-index: 20;
+}
+
+:host ::ng-deep .title {
+	flex-grow: 0.1; 
+
+	text-align: center;
+	margin: 0;
+	font-family: "karla", sans-serif;
+	font-size: 3.5em;
+
+}
+
+.tutorial {
+	flex-grow: 1;
+	display:flex; 
+	flex-direction: column; 
+	justify-content: flex-start; 
+}
+
+:host ::ng-deep .content {
+	flex-grow: 1; 
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+:host ::ng-deep .content__header {
+	text-align: center; 
+	margin: 0;
+
+	font-family: "Roboto", sans-serif;
+	font-size: 1.8em;
+	font-weight: 300;
+	
+	padding: 14px;
+}
+
+:host ::ng-deep .content__body {
+	font-family: "Roboto", sans-serif;
+	font-size: 1em;
+	font-weight: 500;
+
+	display:flex; 
+	flex-direction: column;
+	justify-content: center; 
+	align-items: center;
+}
+
+:host ::ng-deep img {
+	max-width: 80%;
+}
+
+:host ::ng-deep p{
+	margin: 0;
+	padding: 8px;
+}
+
+

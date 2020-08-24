@@ -11,6 +11,8 @@ export class BFS {
 
 	steps: Step [] = [];
 
+	public infos: any [] ;
+
 	pathColor: string = 'green';
 	activeColor: string = 'red';
 	visitedColor: string = 'maroon';
@@ -20,6 +22,8 @@ export class BFS {
 		this.nodes = nodes;
 		this.edges = edges;
 
+		this.infos = [] ;
+
 		this.adj = [];
 		let l = this.nodes.length;
 		for ( let i = 0 ; i < l ; i ++ ){
@@ -28,6 +32,27 @@ export class BFS {
 				this.adj[i][j] = this.isAdjacent(i,j);
 			}
 		}
+
+		this.infos.push ({
+			info: 'Path',
+			value: this.pathColor
+		}
+		);
+		this.infos.push ({
+			info: 'Active',
+			value: this.activeColor
+		}
+		);
+		this.infos.push ({
+			info: 'Visited',
+			value: this.visitedColor
+		}
+		);
+		this.infos.push ({
+			info: 'Adjacent',
+			value: this.adjColor
+		}
+		);
 	}
 
 	private isAdjacent  (i: number, j: number): boolean{

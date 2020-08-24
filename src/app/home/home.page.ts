@@ -13,15 +13,27 @@ import { Edge } from '../classes/edge';
 })
 export class HomePage {
 
+	private select_algorithm: HTMLSelectElement;
+
+	public placing: string = "nodes";
+
   	constructor(private nodesManager: NodesManagerService, private searchAlgorithm: SearchAlgorithmService) {}
 
 	public SwitchClicked (): void {
 		this.nodesManager.Switch();
+		if ( this.placing.localeCompare("nodes") == 0){
+			this.placing = "edges";
+		}else {
+			this.placing = "nodes";
+		}
 	}
 
 	public RunClicked(): void {
-		this.searchAlgorithm.InitBFS (this.nodesManager.nodes, this.nodesManager.edges);
-		this.searchAlgorithm.RunBFS();
+		this.select_algorithm = document.querySelector("[data-js='algorithm']");
+		let algorithm: string = this.select_algorithm.value;
+
+		this.searchAlgorithm.InitAlg (algorithm);
+		this.searchAlgorithm.RunAlg();
 	}
 
 	public StepRightclicked(): void {
@@ -30,6 +42,19 @@ export class HomePage {
 
 	public StepLeftclicked(): void {
 		this.searchAlgorithm.stepLeft ();
+	}
+
+	public ResetClicked(): void {
+		this.nodesManager.Reset ();
+		this.searchAlgorithm.Reset ();
+	}
+
+	public VisualizeClicked(): void {
+		this.searchAlgorithm.Visualize();
+	}
+
+	public StopClicked(): void {
+		this.searchAlgorithm.Stop();
 	}
 
 }

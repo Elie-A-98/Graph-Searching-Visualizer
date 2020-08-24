@@ -21,6 +21,8 @@ export class NodesManagerService {
 
 	private isNodes: boolean = true;
 
+	public infos: any [] = [] ;
+
 	constructor() {}
 	  
 	AddNode (x: number, y: number): void {
@@ -67,6 +69,13 @@ export class NodesManagerService {
 
 	Switch (): void {
 		this.isNodes = !this.isNodes;
+	}
+
+	public Reset(): void{
+		this.nodes = [] ;
+		this.edges = [] ;
+
+		this.infos = [];
 	}
 
 }

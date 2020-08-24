@@ -11,43 +11,42 @@ import { DFS } from '../classes/dfs';
 })
 export class SearchAlgorithmService {
 
-	bfs: BFS;
-	dfs: DFS;
+	alg: any;
 
 	steps: Step [];
 	step_index : number ;
 
-  	public constructor(private nodesManager: NodesManagerService) {}
+	animation_timeout: any;
+	isRunningAnimation: boolean = false;
 
-	public InitBFS (nodes: Nodee [], edges: Edge []):void{
-		this.bfs = new BFS (nodes, edges);
-	}
-	public InitDFS (nodes: Nodee [], edges: Edge []):void{
-		this.dfs = new DFS (nodes, edges);
+	public constructor(private nodesManager: NodesManagerService) {}
+
+	public InitAlg (alg: string):void{
+		if (alg.toLowerCase().localeCompare("bfs") == 0){
+			this.alg = new BFS (this.nodesManager.nodes, this.nodesManager.edges);
+		}else if (alg.toLowerCase().localeCompare("dfs") == 0){
+			this.alg = new DFS (this.nodesManager.nodes, this.nodesManager.edges);
+		}
 	}
 
-	public RunBFS(): void {
-		this.bfs.Run ();
-		this.steps = this.bfs.getSteps ();
+	public RunAlg(): void {
+		this.alg.Run ();
+		this.steps = this.alg.getSteps ();
 
 		this.step_index = 0 ;
 
-	}
-
-	public RunDFS(): void {
-		this.dfs.Run ();
-		this.steps = this.dfs.getSteps ();
-
-		this.step_index = 0 ;
+		this.nodesManager.infos = this.alg.infos;
 	}
 
 	//Automatically run the steps
-	public RunSteps (): void {
-		for ( let i = 0 ; i < this.steps.length; i ++ ){
-			setTimeout(() => {
-				this.nodesManager.nodes = this.steps[i].nodes;
-			}, i*1000);
+	public Visualize (): void {
+		if (this.step_index < this.steps.length){
+			
+			this.stepRight ();
 
+			this.animation_timeout = setTimeout(() => {
+				this.Visualize();
+			}, 1000);
 		}
 	}
 
@@ -59,6 +58,16 @@ export class SearchAlgorithmService {
 	public stepLeft(): void {
 		this.step_index = Math.max (0, this.step_index-1);
 		this.nodesManager.nodes = this.steps[this.step_index].nodes;
+	}
+
+	public Stop(): void {
+		clearTimeout(this.animation_timeout);
+	}
+
+	public Reset(): void{
+		this.Stop();
+		this.steps = [];
+		this.step_index = 0;
 	}
 	
 }

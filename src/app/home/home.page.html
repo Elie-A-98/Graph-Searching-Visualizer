@@ -1,30 +1,38 @@
 <ion-content style="position: relative;" [fullscreen]="true">
 
+	<!-- Tutorial -->
+	<app-tutorial></app-tutorial>
+
 	<!-- Top bar -->
 	<div style="width:100%; height:5%; background-color: #567fa9;">
 
 		<div class="row" style = "color: white;">
 
-			<div class="row__col row__col--33 row" style="padding: 12px;">
-				<div class="row__col row__col--50">
+			<div class="row__col row__col--33 row">
+				<div class="row__col row__col--50" >
+					<div class="center_v">
 						Choose algorithm:
-						<select>
+						<select data-js = "algorithm">
 							<option>BFS</option>
 							<option>DFS</option>
 						</select>
+					</div>
 				</div>
 				
-				<div class="row__col row__col-50">
-					<button class="center_v" (click) = "SwitchClicked()"> 
-						Switch
-					</button>
+				<div class="row__col row__col--50">
+					<div class="center_v" >
+						<button (click) = "SwitchClicked()"> 
+							Switch
+						</button>
+
+						({{placing}})
+					</div>		
 				</div>
 			</div>
 
-			<div class="row__col row__col--33 row">
+			<div class="row__col row__col--33 " >
 				
-				<div class="row__col row__col--75">
-					<div class="center">
+					<div class="center" >
 						<button (click) = "StepLeftclicked()">
 							<span>&#8592;</span>
 						</button>
@@ -34,14 +42,31 @@
 						<button (click) = "StepRightclicked()">
 							<span>&#8594;</span>
 						</button>
+
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+						<button (click) = "VisualizeClicked()">
+							Visualize
+						</button>
+						
+						&nbsp;
+
+						<button (click) = "StopClicked()">
+							Stop
+						</button>
 					</div>
-				</div>				
 			</div>
 
 			<div class="row__col row__col--33">
-				<button class="center--right" (click) = "RunClicked()">
-					Run
-				</button>
+				<div class="center--right">
+					<button (click) = "RunClicked()" style="margin-right: 8px;">
+						Run
+					</button>
+	
+					<button (click) = "ResetClicked()">
+						Reset
+					</button>
+				</div>
 			</div>
 
 		</div>

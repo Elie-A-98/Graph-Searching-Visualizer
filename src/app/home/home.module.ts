@@ -8,6 +8,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { GraphComponent } from '../components/graph/graph.component';
 import { NodeComponent } from '../components/node/node.component';
 import { EdgeComponent } from '../components/edge/edge.component';
+import { TutorialComponent } from '../components/tutorial/tutorial.component';
 
 
 
@@ -23,7 +24,8 @@ import { EdgeComponent } from '../components/edge/edge.component';
   declarations: [HomePage,
 	GraphComponent,
 	NodeComponent,
-	EdgeComponent
+	EdgeComponent,
+	TutorialComponent
 	]
 })
 export class HomePageModule {}
